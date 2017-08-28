@@ -1,0 +1,36 @@
+'''
+Question:
+Implement pow(x, n) % d.
+
+In other words, given x, n and d,
+
+find (xn % d)
+'''
+class Solution:
+    # @param x : integer
+    # @param n : integer
+    # @param d : integer
+    # @return an integer
+    def pow(self, x, n, d):
+        def root(x,n,d):	
+                if( n == 0):
+                    return 1
+                t = root(x, n/2,d)
+                if (n%2 == 0):
+                    return t*t%d
+                else:
+                    return x*t*t%d
+        if(x==0):
+            return(0)
+        if(n==0):
+            return(1%d)
+        if(x>0):
+            p=root(x,n,d)   
+            return(p)	
+        else:
+            p=root(-x,n,d)
+            if(n%2==0):
+                return(p)
+            else:
+                return(d-p)
+                

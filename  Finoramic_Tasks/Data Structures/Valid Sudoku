@@ -1,0 +1,60 @@
+'''
+Question:
+Determine if a Sudoku is valid, according to: http://sudoku.com.au/TheRules.aspx
+
+The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.
+
+'''
+class Solution:
+    # @param A : tuple of strings
+    # @return an integer
+    def isValidSudoku(self, A):
+        l=A
+        x = ["" for i in range(9)]
+        y = ["" for i in range(9)]
+        for i in l:
+        	for j in i:
+        		if j.isnumeric():
+        			if i.count(j)>1:
+        				return(0)
+        
+        for i in range(9):
+        	for j in range(9):
+        		x[i]=x[i]+(l[j][i])	
+        for i in x:
+        	for j in i:
+        		if j.isnumeric():
+        			if i.count(j)>1:
+        				return(0)
+        				
+        for i in range(3):
+        	for j in range(3):
+        		y[0]=y[0]+(l[j][i])				
+        	for j in range(3,6):
+        		y[1]=y[1]+(l[j][i])
+        	for j in range(6,9):
+        		y[2]=y[2]+(l[j][i])	
+        
+        for i in range(3,6):
+        	for j in range(3):
+        		y[3]=y[3]+(l[j][i])				
+        	for j in range(3,6):
+        		y[4]=y[4]+(l[j][i])
+        	for j in range(6,9):
+        		y[5]=y[5]+(l[j][i])	
+        for i in range(6,9):
+        
+        	for j in range(3):
+        		y[6]=y[6]+(l[j][i])				
+        	for j in range(3,6):
+        		y[7]=y[7]+(l[j][i])
+        	for j in range(6,9):
+        		y[8]=y[8]+(l[j][i])	
+        
+        for i in y:
+        	for j in i:
+        		if j.isnumeric():
+        			if i.count(j)>1:
+        				return(0)
+        				
+        return(1)				
